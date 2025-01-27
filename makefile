@@ -1,4 +1,4 @@
-PKG:=PACKAGE_NAME
+PKG:=meta_only
 EXTRAS:=dev
 
 UV:=$(shell uv --version)
@@ -21,7 +21,7 @@ venv: .venv
 	echo 'run `source .venv/bin/activate` to activate virtualenv'
 
 test:
-	python -m unittest -v $(PKG)
+	python -m unittest -v $(PKG).tests
 	python -m mypy -p $(PKG)
 
 lint:
@@ -36,6 +36,3 @@ clean:
 
 distclean: clean
 	rm -rf .venv
-
-init:
-	@python init.py
